@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hw-4.1</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+
+        /*Сделайте в стиле es5, а затем в стиле es6:
+        конструктор Product, который принимает параметры name и price, 
+        сохраните их как свойства объекта.
+        Также объекты типа Product должны иметь метод make25PercentDiscount, 
+        который будет уменьшать цену в объекте на 25%.
+        Имейте в виду, что метод make25PercentDiscount 
+        не должен быть внутри функции-конструктора,
+        и также не нужно создавать отдельный объект-прототип 
+        (как объект transport в уроке).
+         */
+
+        // ES5:
+
+        function ProductES5(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+
+        ProductES5.prototype.make25PercentDiscount = function () {
+            const priceSale = (this.price * 25) / 100;
+            const newPrice = this.price - priceSale;
+            console.log(`${this.name} стоит ${this.price} руб., \
+с учетом скидки в 25%, только сейчас и только для Вас, \
+имеет окончательную стоимость ${newPrice} руб.`);
+        }
+
+        const product1ES5 = new ProductES5('"ProductES5"', 2000);
+        product1ES5.make25PercentDiscount();
+
+        const product2ES5 = new ProductES5('"Product-2ES5"', 1000);
+        product2ES5.make25PercentDiscount();
+
+
+        //ES6:
+
+        class ProductES6 {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+
+            make25PercentDiscount() {
+                const priceSale = (this.price * 25) / 100;
+                const newPrice = this.price - priceSale;
+                console.log(`${this.name} стоит ${this.price} руб., \
+с учетом скидки в 25%, только сейчас и только для Вас, \
+имеет окончательную стоимость ${newPrice} руб.`);
+            }
+        }
+
+        const product1ES6 = new ProductES6('"ProductES6"', 2500);
+        product1ES6.make25PercentDiscount();
+
+        const product2ES6 = new ProductES6('"Product-2ES6"', 3670);
+        product2ES6.make25PercentDiscount();
+
+    </script>
+</body>
+
+</html>
