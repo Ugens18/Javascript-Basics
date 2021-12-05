@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+
+<body>
+  <!--
+Обязательное задание.
+
+Необходимо скопировать и вставить в данный скрипт все функции из 4 задания.
+Необходимо реализовать функцию:
+mathOperation(arg1, arg2, operation);
+Параметры:
+arg1 - первое число.
+arg2 - второе число.
+operation - строка, которая содержит один символ из: "+", "-", "*", "/".
+Функция mathOperation должна вернуть результат операции, который был передан в
+параметр operation для двух первых аргументов (arg1 и arg2).
+Функция mathOperation должна использовать для вычисления функции из 4 задания.
+
+Примеры вызова функции:
+console.log(mathOperation(5, 3, "+")); // 8
+console.log(mathOperation(5, 3, ":)")); // NaN
+
+Функции mathOperation всегда передаются корректные числа, проверки на NaN,
+Infinity делать не нужно, однако, в случае если был передан некорректный
+аргумент в параметр operation, необходимо вернуть NaN.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+  <script>
+    "use strict";
+
+    const a = 5;
+    const b = 6;
+    const arg1 = a;
+    const arg2 = b;
+
+    /**
+     * @date 2021-11-22
+     * @returns {sumNumbers} Возвращается сумма чисел, 
+     * которая далее передается в console.log.
+     */
+    const sumNumbers = (a, b) => a + b;
+
+    /**
+     * @date 2021-11-22
+     * @param {if} a - b > 0 Сравнивается разность чисел, 
+     * для понимания положительное ли число в результате, отрицательное или null.
+     * @returns {diffNumbers} Возвращается подходящая разность чисел, 
+     * которая далее передается в console.log.
+     */
+    const diffNumbers = (a, b) => {
+      if (a - b > 0) {
+        return a - b;
+      } else if (a - b < 0) {
+        return b - a;
+      } else if (a - b === 0) {
+        return null;
+      }
+    }
+
+    /**
+     * @date 2021-11-22
+     * @returns {multiplyNumbers} Возвращается произведение чисел, 
+     * которое далее передается в console.log.
+     */
+    const multiplyNumbers = (a, b) => a * b;
+
+    /**
+     * @date 2021-11-22
+     * @returns {multiplyNumbers} Возвращается деление чисел, 
+     * которое далее передается в console.log.
+     */
+    const divideNumbers = (a, b) => (a / b).toFixed(1);
+
+
+    /**
+     * @date 2021-11-22
+     * @param {const} arg1 = a:
+     * Переменная новой функции принимает параметры старой
+     * @param {const}  arg2 = b:
+     * Переменная новой функции принимает параметры старой
+     * @param {const}  operation = symbol:
+     * Переменная новой функции принимает параметры старой
+     * @returns {mathOperation} :
+     * Возвращает результат операции в зависимости от запрошенного оператора
+     */
+    const mathOperation = (arg1, arg2, operation) => {
+      if (operation == "+") {
+        return sumNumbers(arg1, arg2);
+      } if (operation == "-") {
+        return diffNumbers(arg1, arg2);
+      } if (operation == "*") {
+        return multiplyNumbers(arg1, arg2);
+      } if (operation == "/") {
+        return divideNumbers(arg1, arg2);
+      } else {
+        return NaN
+      };
+    }
+
+    const operations = ["+", "-", "*", "/"];
+
+    for (const operation in operations) {
+      console.log(mathOperation(arg1, arg2, operations[operation]));
+    }
+
+// ИЛИ
+
+    /*     for (let operation = 0; operation < operations.length; operation++) {
+          console.log(mathOperation(arg1, arg2, operations[operation]));
+        }
+     */
+  </script>
+</body>
+
+</html>
